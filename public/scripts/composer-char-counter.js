@@ -9,7 +9,7 @@ $(document).ready(function() {
   
   $("#tweet-text").on('input', function() {
     const counter = $(this).parent().children('.btn-container').children('.counter');
-    console.log(counter);
+  
     
     // catch delete button presses
     if ($(this).val() !== "") {
