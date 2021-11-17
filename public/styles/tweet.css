@@ -1,10 +1,12 @@
 article {
   border: #616161 solid 3px;
-  margin: 3vh;
+  border-radius: 3px;
+  margin-bottom: 8vh;
   width: 100%;
   padding: 0 1.5vw 0 1.5vw;
   transition: all .3s ease-in-out; 
 }
+
 article:hover {
   box-shadow: 3px 5px 10px #44424283;
   transform: scale(1.02);

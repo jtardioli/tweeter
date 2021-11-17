@@ -23,7 +23,7 @@ nav span {
   justify-content: space-between;
 }
 .go-down > i {
-color: #f12c2cda;
+color:rgb(223, 170, 25);
 transition: all 0.2s ease-in-out;
 }
 .go-down > i:hover {
