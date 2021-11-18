@@ -9,7 +9,6 @@ $(() => {
   
   const $form = $("#handleForm");
   $form.on("submit", postTweet);
-  $('.new-tweet').hide();
   $('.error').hide();
   loadTweets();
 });
