@@ -1,3 +1,6 @@
+#tweets-container {
+  width: 100%;
+}
 article {
   border: #616161 solid 3px;
   border-radius: 3px;

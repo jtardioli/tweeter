@@ -9,14 +9,14 @@ $(() => {
   
   const $form = $("#handleForm");
   $form.on("submit", postTweet);
-  
-  $('.error').hide();
   $('.new-tweet').hide();
+  $('.error').hide();
   loadTweets();
 });
 
 //create one textbox for one tweet
 const createTweetElement = (tweet) => {
+  const safeStr = escape(tweet.content.text);
   const $tweet = `
     <article class="tweet">
     <header>
@@ -27,7 +27,7 @@ const createTweetElement = (tweet) => {
       <p>${tweet.user.handle}</p>
       </header>
       <div class="tweet-content">
-        <p>${escape(tweet.content.text)}</p>
+        <p>${decodeURIComponent(safeStr)}</p>
       </div>
      
       <footer>
@@ -49,6 +49,7 @@ const createTweetElement = (tweet) => {
 const renderTweets = (tweets) => {
   const $tweetContainer = $("#tweets-container");
   $tweetContainer.empty();
+  
 
   for (const tweet of tweets) {
     $tweetContainer.prepend(createTweetElement(tweet));
@@ -81,7 +82,7 @@ const postTweet = function(event) {
 
   $.post("/tweets", serializedData, () => {
     loadTweets();
-    $(".tweet-text").val("");
+    $("textarea").val('');
     $('.error').hide();
   });
 
