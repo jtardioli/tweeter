@@ -6,10 +6,12 @@
 
 $(() => {
   //new tweet
- 
+  
   const $form = $("#handleForm");
   $form.on("submit", postTweet);
- 
+  
+  $('.error').hide();
+  $('.new-tweet').hide();
   loadTweets();
 });
 
@@ -80,18 +82,21 @@ const postTweet = function(event) {
   $.post("/tweets", serializedData, () => {
     loadTweets();
     $(".tweet-text").val("");
+    $('.error').hide();
   });
 
 };
 
 const formValid = function(input) {
   if (input === '' || input === null) {
-    alert('tweet is too short');
+    $('.error').slideDown('slow');
+    $('.error-msg').text('Your message is too short!');
     return false;
   }
 
   if (input.length > 140) {
-    alert('tweet is long');
+    $('.error').slideDown('slow');
+    $('.error-msg').text('Your message is too long');
     return false;
   }
 

@@ -41,7 +41,7 @@ button {
   transition: all .2s ease-in-out; 
 }
 
-button:hover {
+.btn-container button:hover {
   transform: scale(1.06); 
 }
 button:active {
@@ -62,14 +62,22 @@ button:active {
   font-size: 1em;
   background-color:#e96b6b;
   color: #333232;
-  margin-top: 5vh;
+  margin-bottom: 5vh;
   text-align: center;
   border-radius: 5px;
   height: 50px;
 ;
 }
 
-.hide {
-  display: none;
+.error > p {
+flex: 30;
 }
+.error > button {
+  color: #333232;
+  flex: 1;
+  background-color: #e96b6b;
+}
+
+
+
 
