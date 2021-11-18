@@ -42,6 +42,8 @@ article.tweet header div > img {
   color: #615e5e;
   font-size: 0.9em;
   padding: 0 1.5vh 0 1.5vw;
+  word-wrap: break-word;
+  word-break: break-word;
 
 }
 article.tweet footer {
