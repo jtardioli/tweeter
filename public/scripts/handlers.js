@@ -15,12 +15,16 @@ $(() => {
     }
   });
 
+  // move to top when button is clicked
   $('.fixed-button').click(function() {
-    document
-      .querySelector(".new-tweet")
-      .scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+    $('html, body').animate({ scrollTop: 0 }, 'slow');
   });
   
-
+  // Show/Hide the button on scroll
+  window.onscroll = function() {
+    let pageOffset = document.documentElement.scrollTop || document.body.scrollTop,
+      scrollBtn = document.querySelector('.fixed-button');
+    if (scrollBtn) scrollBtn.style.visibility = pageOffset > 370 ? 'visible' : 'hidden';
+  };
 
 });

@@ -1,7 +1,7 @@
 .fixed-button {
   position: fixed;
-  bottom: 4%;
-  right: 3%;
+  bottom: 15px;
+  right: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,6 +12,7 @@
   border-radius: 100px;
   box-shadow: 3px 3px 10px #44424283;
   transition: all 0.2s ease-in-out;
+  visibility: hidden;
   
 }
 

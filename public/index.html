@@ -56,11 +56,9 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
+
       <section class="new-tweet">
-        <div class="error">
-          <p class="error-msg"></p>
-          <button class="err-btn" >X</button>
-        </div>
+
         <form id="handleForm">
        
           <textarea placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>
@@ -69,13 +67,18 @@
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
+      </section>
+      <div class="error">
+        <p class="error-msg"></p>
+        <button class="err-btn" >X</button>
+      </div>
 
-      </section>
-      <section id="tweets-container">
-      </section>
       <div class="fixed-button">
         <i class="fas fa-angle-double-up"></i>
       </div>
+      <section id="tweets-container">
+      </section>
+ 
 
     </main>
     
