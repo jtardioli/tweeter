@@ -3,95 +3,97 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
 
+$(() => {
+  //new tweet
+ 
+  const $form = $("#handleForm");
+  $form.on("submit", postTweet);
+ 
+  loadTweets();
+});
 
-$(document).ready(function() {
-  const createTweetElement = function(tweetObj) {
-    const created = tweetObj.created_at;
-    const $tweet = $(`
-
+//create one textbox for one tweet
+const createTweetElement = (tweet) => {
+  const $tweet = `
     <article class="tweet">
     <header>
       <div >
-        <img src="${tweetObj.user.avatars}" alt="">
-        <p>${tweetObj.user.name}</p>
+        <img src="${tweet.user.avatars}" alt="">
+        <p>${tweet.user.name}</p>
       </div>
-      <p>${tweetObj.user.handle}</p>
+      <p>${tweet.user.handle}</p>
       </header>
       <div class="tweet-content">
-        <p>${tweetObj.content.text}</p>
+        <p>${tweet.content.text}</p>
       </div>
      
       <footer>
-        <p>${timeago.format(created)}</p>
+        
+        <p>${timeago.format(tweet.created_at)}</p>
         <div>
-          <i class="far fa-flag"></i> 
+          <i class="far fa-flag"></i>
           <i class="fas fa-retweet"></i>
           <i class="far fa-heart"></i>
         </div>
       </footer>
     </article>
-
-    `);
-
-    return $tweet;
-  };
-
-  const renderTweets = function(tweetsArr) {
-    for (let tweetData of tweetsArr) {
-      const $tweet = createTweetElement(tweetData);
-      $('main').append($tweet);
-    }
-  };
   
-  
-  renderTweets(data);
-  
-  
-});
+    `;
+  return $tweet;
+};
 
-// <article class="tweet">
-// <header>
-//   <div >
-//     <img src="https://i.imgur.com/73hZDYK.png" alt="">
-//     <p>Newton</p>
-//   </div>
-//   <p>@SirIsaac</p>
-//   </header>
-//   <div class="tweet-content">
-//     <p>If I have seen further it is by standing on the shoulders of giants</p>
-//   </div>
- 
-//   <footer>
-//     <p>10 days ago</p>
-//     <div>
-//       <i class="far fa-flag"></i>
-//       <i class="fas fa-retweet"></i>
-//       <i class="far fa-heart"></i>
-//     </div>
-//   </footer>
-// </article>
+//creating many display textboxes for tweets from database
+const renderTweets = (tweets) => {
+  const $tweetContainer = $("#tweets-container");
+  $tweetContainer.empty();
+
+  for (const tweet of tweets) {
+    $tweetContainer.prepend(createTweetElement(tweet));
+  }
+};
+
+//load tweets on the page
+const loadTweets = () => {
+  $.ajax({
+    url: "/tweets",
+    method: "GET",
+    dataType: "json",
+    success: (tweets) => {
+      renderTweets(tweets);
+    },
+    error: (err) => {
+      console.log("error: ", err);
+    },
+  });
+};
+
+//post new tweet & potential errors message
+const postTweet = function(event) {
+  event.preventDefault();
+  if (!formValid($("#tweet-text").val())) {
+    return;
+  }
+
+  const serializedData = $(this).serialize();
+
+  $.post("/tweets", serializedData, () => {
+    loadTweets();
+    $(".tweet-text").val("");
+  });
+
+};
+
+const formValid = function(input) {
+  if (input === '' || input === null) {
+    alert('tweet is too short');
+    return false;
+  }
+
+  if (input.length > 140) {
+    alert('tweet is long');
+    return false;
+  }
+
+  return true;
+};
