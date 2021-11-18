@@ -1,6 +1,8 @@
 .new-tweet{
+  
   margin: 8vh 0 10vh 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
 
@@ -53,4 +55,21 @@ button:active {
   color: #ca2525da;
 }
 
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  background-color:#e96b6b;
+  color: #333232;
+  margin-top: 5vh;
+  text-align: center;
+  border-radius: 5px;
+  height: 50px;
+;
+}
+
+.hide {
+  display: none;
+}
 
