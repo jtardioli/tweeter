@@ -1,20 +1,16 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
 
 $(() => {
   //new tweet
-  
   const $form = $("#handleForm");
   $form.on("submit", postTweet);
+  //hide error message on start up
   $('.error').hide();
   loadTweets();
 });
 
-//create one textbox for one tweet
+
 const createTweetElement = (tweet) => {
+  // escape string to prevent hackerz :'(
   const safeStr = escape(tweet.content.text);
   const $tweet = `
     <article class="tweet">
@@ -26,6 +22,7 @@ const createTweetElement = (tweet) => {
       <p>${tweet.user.handle}</p>
       </header>
       <div class="tweet-content">
+      
         <p>${decodeURIComponent(safeStr)}</p>
       </div>
      
@@ -44,7 +41,7 @@ const createTweetElement = (tweet) => {
   return $tweet;
 };
 
-//creating many display textboxes for tweets from database
+
 const renderTweets = (tweets) => {
   const $tweetContainer = $("#tweets-container");
   $tweetContainer.empty();
@@ -55,7 +52,7 @@ const renderTweets = (tweets) => {
   }
 };
 
-//load tweets on the page
+// fetch tweets from data base
 const loadTweets = () => {
   $.ajax({
     url: "/tweets",
@@ -73,6 +70,7 @@ const loadTweets = () => {
 //post new tweet & potential errors message
 const postTweet = function(event) {
   event.preventDefault();
+  // check if the form input is valid before going forward
   if (!formValid($("#tweet-text").val())) {
     return;
   }
@@ -82,10 +80,12 @@ const postTweet = function(event) {
   $.post("/tweets", serializedData, () => {
     loadTweets();
     $("textarea").val('');
+    // hide error incase there was one previously
     $('.error').hide();
   });
 
 };
+
 
 const formValid = function(input) {
   if (input === '' || input === null) {

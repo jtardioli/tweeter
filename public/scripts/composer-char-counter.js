@@ -3,14 +3,10 @@
 let charCounter = 0;
 
 $(document).ready(function() {
-  console.log('Hello from jquery');
-
-
-  
   $("#tweet-text").on('input', function() {
+    // get counter element
     const counter = $(this).parent().children('.btn-container').children('.counter');
   
-    
     // catch delete button presses
     if ($(this).val() !== "") {
       charCounter = 140  - $(this).val().length;

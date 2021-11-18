@@ -32,17 +32,16 @@
 
   <body>
     <!-- Top nav bar (fixed) -->
-
       <nav>
         <span class="logo">tweeter</span>
         <div class="go-down">
           <p class="nav-message"><strong> Write</strong> a new tweet</p>
             <i class="fas fa-angle-double-down rotate"></i>
         </div>
-        
       </nav>
 
       <div class="view" >
+
         <header class="profile-background">
           <div class="profile-img">
               <img  image src="/images/profile-hex.png"> 
@@ -51,17 +50,13 @@
           <div>
               <h2 class="profile-name"><strong>Your</strong> Name</h2>
           </div>
-      </header>
+        </header>
    
-  
-  
       <!-- Page-specific (main) content here -->
       <main class="container">
   
         <section class="new-tweet">
-  
           <form id="handleForm">
-         
             <textarea placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>
             <div class="btn-container">
               <button type="submit">Tweet</button>
@@ -69,6 +64,7 @@
             </div>
           </form>
         </section>
+
         <div class="error">
           <p class="error-msg"></p>
           <button class="err-btn" >X</button>
@@ -77,13 +73,11 @@
         <div class="fixed-button">
           <i class="fas fa-angle-double-up"></i>
         </div>
+
         <section id="tweets-container">
         </section>
    
-  
       </main>
       </div>
-     
-    
   </body>
 </html>
