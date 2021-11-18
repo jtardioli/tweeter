@@ -1,8 +1,8 @@
 nav {
-  position: sticky;
+
   width: 100%;
   top: 0;
-  background-color: #4056A1;
+  background-color: none;
   color: #FFFFFF;
   height: 120px;
   padding: 0 1.5em 0  1.5em;
@@ -59,3 +59,26 @@ margin-bottom: 4px;
     top: 0;
   }
 }
+
+@media only screen and (max-width: 535px) {
+ .go-down {
+   display: none
+ }
+ nav {
+  flex-direction: column;
+ }
+ nav span {
+  margin-top: 3vh;
+ }
+}
+ 
+
+@media only screen and (min-width: 1095px) {
+  nav {
+    position: sticky;
+    background-color: #4056A1;
+ 
+  }
+
+}
+ 

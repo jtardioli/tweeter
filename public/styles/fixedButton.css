@@ -1,18 +1,19 @@
 .fixed-button {
   position: fixed;
-  bottom: 15px;
-  right: 15px;
+  bottom: 10px;
+  right: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #ffffff;
   background-color: rgb(223, 170, 25);;
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   border-radius: 100px;
   box-shadow: 3px 3px 10px #44424283;
   transition: all 0.2s ease-in-out;
   visibility: hidden;
+  z-index: 1;
   
 }
 

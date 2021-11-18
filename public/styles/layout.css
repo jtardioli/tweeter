@@ -30,6 +30,17 @@ body {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
+.view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  position: absolute;
+  top: 0;
+  width: 100%;
+  
+}
+
  main {
    display: flex;
    flex-direction: column;
@@ -40,6 +51,32 @@ body {
    height: 100vh;
  }
 
+ @media only screen and (max-width: 535px) {
+  main {
+
+    width: 90%;
+    height: 100vh;
+  }
+ 
+ }
+
+ @media only screen and (min-width: 1095px) {
+  .view {
+    margin-top: 10vh;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start; 
+    position: static
+  }
+
+  main {
+    margin-top: 3vh;
+    width: 50%;
+    
+
+  }
+
+}
  
 
 

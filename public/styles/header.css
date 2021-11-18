@@ -2,22 +2,33 @@
   z-index: -1;
   color: #FFFFFF;
   position: relative;
-  height: 400px;
+  height: 550px;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: 10.5%;
-  margin-bottom: 7vh;
+  top: 0;
+  margin-bottom: 10vh;
   background-color: #b8a493;
   background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
 }
 .profile-img {
 position: relative;
-top: -1.5%
+top: 5.5%
 
 }
 .profile-name {
   font-weight: 400;
 }
+
+@media only screen and (min-width: 1095px) {
+  .profile-background {
+    width: 30%;
+    top: 10.5%;
+    height: 400px;
+    
+  }
+
+}
+ 
