@@ -8,10 +8,15 @@ $(() => {
   loadTweets();
 });
 
+const escape = function(str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
 const createTweetElement = (tweet) => {
   // escape string to prevent hackerz :'(
-  const safeStr = escape(tweet.content.text);
+  // const safeStr = escape(tweet.content.text).replaceAll;
   const $tweet = `
     <article class="tweet">
     <header>
@@ -23,7 +28,7 @@ const createTweetElement = (tweet) => {
       </header>
       <div class="tweet-content">
       
-        <p>${decodeURIComponent(safeStr)}</p>
+        <p>${escape(tweet.content.text)}</p>
       </div>
      
       <footer>
@@ -88,7 +93,7 @@ const postTweet = function(event) {
 
 
 const formValid = function(input) {
-  if (input === '' || input === null) {
+  if (!input) {
     $('.error').slideDown('slow');
     $('.error-msg').text('Your message is too short!');
     return false;
